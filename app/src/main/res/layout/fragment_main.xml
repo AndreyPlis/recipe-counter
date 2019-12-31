@@ -9,7 +9,7 @@
 
     <Button
         android:id="@+id/buttonGoods"
-        android:layout_width="150"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="@string/goods"
         app:layout_constraintBottom_toTopOf="@+id/buttonRecipes"
@@ -19,7 +19,7 @@
 
     <Button
         android:id="@+id/buttonRecipes"
-        android:layout_width="150"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="@string/recipes"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,7 +30,7 @@
 
     <Button
         android:id="@+id/buttonCalculator"
-        android:layout_width="150"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:text="@string/calculator"
         app:layout_constraintBottom_toBottomOf="parent"
