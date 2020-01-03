@@ -1,4 +1,4 @@
-package com.andreyplis.recipecounter
+package com.andreyplis.recipecounter.view
 
 
 import android.os.Bundle
@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import com.andreyplis.recipecounter.R
 
 /**
  * A simple [Fragment] subclass.
@@ -29,7 +30,9 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
-        view.findViewById<Button>(R.id.buttonGoods).setOnClickListener { v -> navController.navigate(R.id.action_mainFragment_to_goodsFragment) }
+        view.findViewById<Button>(R.id.buttonGoods).setOnClickListener { v -> navController.navigate(
+            R.id.action_mainFragment_to_goodsFragment
+        ) }
     }
 
 

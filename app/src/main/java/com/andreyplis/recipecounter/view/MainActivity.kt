@@ -1,7 +1,8 @@
-package com.andreyplis.recipecounter
+package com.andreyplis.recipecounter.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.andreyplis.recipecounter.R
 
 class MainActivity : AppCompatActivity() {
 

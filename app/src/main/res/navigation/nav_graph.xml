@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.andreyplis.recipecounter.MainFragment"
+        android:name="com.andreyplis.recipecounter.view.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/goodsFragment"
-        android:name="com.andreyplis.recipecounter.GoodsFragment"
+        android:name="com.andreyplis.recipecounter.view.GoodsFragment"
         android:label="fragment_goods"
         tools:layout="@layout/fragment_goods" />
 </navigation>
