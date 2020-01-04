@@ -14,7 +14,9 @@ class ProductsViewModel(application: Application) : AndroidViewModel(application
         return productsRepository.getProducts()
     }
 
-    fun insert(productEntity: ProductEntity) {
-        productsRepository.insert(productEntity)
+    fun delete(productEntity: ProductEntity)
+    {
+        productsRepository.delete(productEntity)
     }
+
 }

@@ -12,6 +12,8 @@ import com.andreyplis.recipecounter.db.entity.ProductEntity
 
 class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductHolder>() {
 
+    lateinit var listener: ClickListener
+
     var products = listOf<ProductEntity>()
         set(value) {
             field = value
@@ -24,6 +26,16 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductHolder>() {
         val textViewCount: TextView = itemView.findViewById(R.id.textViewCount)
         val textViewPrice: TextView = itemView.findViewById(R.id.textViewPrice)
 
+        init {
+            itemView.setOnClickListener {
+                View.OnClickListener {
+                    if (adapterPosition != RecyclerView.NO_POSITION)
+                        listener.onItemClick(getProduct(adapterPosition)
+                        )
+                }
+            }
+        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductHolder {
@@ -35,6 +47,8 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductHolder>() {
 
     override fun getItemCount(): Int = products.size
 
+    fun getProduct(position: Int): ProductEntity = products[position]
+
 
     override fun onBindViewHolder(holder: ProductHolder, position: Int) {
         val product = products[position]
@@ -42,5 +56,9 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductHolder>() {
         holder.textViewCount.text = "${product.count} x ${product.measure}"
         holder.textViewPrice.text = "${product.price}"
 
+    }
+
+    interface ClickListener {
+        fun onItemClick(productEntity: ProductEntity)
     }
 }

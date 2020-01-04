@@ -19,6 +19,13 @@ class ProductsRepository(application: Application) {
         RepositoryTask(operation = { productsDao.insert(productEntity) }).execute()
     }
 
+    fun delete(productEntity: ProductEntity)
+    {
+        RepositoryTask(operation = {
+            productsDao.delete(productEntity)
+        }).execute()
+    }
+
 
     companion object {
         class RepositoryTask(val operation: () -> Unit) : AsyncTask<ProductEntity, Unit, Unit>() {
