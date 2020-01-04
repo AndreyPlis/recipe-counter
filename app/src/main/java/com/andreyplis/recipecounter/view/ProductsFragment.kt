@@ -15,7 +15,7 @@ import com.andreyplis.recipecounter.viewmodel.ProductsViewModel
 /**
  * A simple [Fragment] subclass.
  */
-class GoodsFragment : Fragment() {
+class ProductsFragment : Fragment() {
 
     lateinit var viewModel: ProductsViewModel
 
@@ -26,10 +26,10 @@ class GoodsFragment : Fragment() {
         // Inflate the layout for this fragment
         viewModel = ViewModelProviders.of(this).get(ProductsViewModel::class.java)
         viewModel.getProducts().observe(this, Observer {
-            Toast.makeText(this@GoodsFragment.context, it.size.toString(), Toast.LENGTH_SHORT)
+            Toast.makeText(this@ProductsFragment.context, it.size.toString(), Toast.LENGTH_SHORT)
                 .show()
         })
-        return inflater.inflate(R.layout.fragment_goods, container, false)
+        return inflater.inflate(R.layout.fragment_products, container, false)
     }
 
 
