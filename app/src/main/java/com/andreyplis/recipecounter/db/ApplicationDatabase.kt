@@ -33,11 +33,11 @@ abstract class ApplicationDatabase : RoomDatabase() {
 
         class task : AsyncTask<Unit, Unit, Unit>() {
             override fun doInBackground(vararg params: Unit?) {
-                instance.getProductDao().insert(ProductEntity(1, "lol", "kg", 1.0f))
+                instance.getProductDao().insert(ProductEntity(1, "lol", "kg", 1,1.0f))
                 instance.getProductDao()
-                    .insert(ProductEntity(2, "lol2", "kg", 1.0f))
+                    .insert(ProductEntity(2, "lol2", "kg", 1,1.0f))
                 instance.getProductDao()
-                    .insert(ProductEntity(3, "lol3", "kg", 1.0f))
+                    .insert(ProductEntity(3, "lol3", "kg", 1,1.0f))
             }
 
         }

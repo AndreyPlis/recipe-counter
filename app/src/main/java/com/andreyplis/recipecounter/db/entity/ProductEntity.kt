@@ -10,6 +10,7 @@ data class ProductEntity(
     override val id: Int,
     override val name: String,
     override val measure: String,
+    override val count: Int,
     override val price: Float
 ) : Product {
 

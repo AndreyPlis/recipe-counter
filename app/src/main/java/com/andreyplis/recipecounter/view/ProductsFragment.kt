@@ -5,10 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.andreyplis.recipecounter.R
 import com.andreyplis.recipecounter.viewmodel.ProductsViewModel
 
@@ -24,12 +25,16 @@ class ProductsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        val view = inflater.inflate(R.layout.fragment_products, container, false)
+        val recyclerView = view!!.findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this.context)
+        val adapter = ProductsAdapter()
+        recyclerView.adapter = adapter
         viewModel = ViewModelProviders.of(this).get(ProductsViewModel::class.java)
         viewModel.getProducts().observe(this, Observer {
-            Toast.makeText(this@ProductsFragment.context, it.size.toString(), Toast.LENGTH_SHORT)
-                .show()
+            adapter.products = it
         })
-        return inflater.inflate(R.layout.fragment_products, container, false)
+        return view
     }
 
 

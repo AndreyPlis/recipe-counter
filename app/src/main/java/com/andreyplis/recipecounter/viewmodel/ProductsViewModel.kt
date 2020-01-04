@@ -6,13 +6,15 @@ import androidx.lifecycle.LiveData
 import com.andreyplis.recipecounter.db.entity.ProductEntity
 import com.andreyplis.recipecounter.repository.ProductsRepository
 
-class ProductsViewModel(application:Application) :AndroidViewModel(application)
-{
-    val productsRepository:ProductsRepository = ProductsRepository(application)
+class ProductsViewModel(application: Application) : AndroidViewModel(application) {
+    val productsRepository: ProductsRepository = ProductsRepository(application)
 
 
-    fun getProducts():LiveData<List<ProductEntity>>
-    {
+    fun getProducts(): LiveData<List<ProductEntity>> {
         return productsRepository.getProducts()
+    }
+
+    fun insert(productEntity: ProductEntity) {
+        productsRepository.insert(productEntity)
     }
 }
