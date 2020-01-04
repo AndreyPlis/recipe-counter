@@ -18,5 +18,14 @@
         android:id="@+id/productsFragment"
         android:name="com.andreyplis.recipecounter.view.ProductsFragment"
         android:label="fragment_products"
-        tools:layout="@layout/fragment_products" />
+        tools:layout="@layout/fragment_products" >
+        <action
+            android:id="@+id/action_productsFragment_to_addProductFragment"
+            app:destination="@id/addProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="com.andreyplis.recipecounter.view.AddProductFragment"
+        android:label="add_product_fragment"
+        tools:layout="@layout/add_product_fragment" />
 </navigation>

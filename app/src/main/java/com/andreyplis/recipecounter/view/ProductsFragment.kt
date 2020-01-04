@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.andreyplis.recipecounter.R
 import com.andreyplis.recipecounter.viewmodel.ProductsViewModel
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 /**
  * A simple [Fragment] subclass.
@@ -34,7 +36,18 @@ class ProductsFragment : Fragment() {
         viewModel.getProducts().observe(this, Observer {
             adapter.products = it
         })
+
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val navController = Navigation.findNavController(view)
+        view.findViewById<FloatingActionButton>(R.id.floatingButtonAddProduct).setOnClickListener {
+            navController.navigate(
+                R.id.action_productsFragment_to_addProductFragment
+            )
+        }
     }
 
 

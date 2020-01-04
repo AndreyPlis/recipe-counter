@@ -30,7 +30,8 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
-        view.findViewById<Button>(R.id.buttonGoods).setOnClickListener { v -> navController.navigate(
+        view.findViewById<Button>(R.id.buttonGoods).setOnClickListener {
+            navController.navigate(
             R.id.action_mainFragment_to_productsFragment
         ) }
     }
