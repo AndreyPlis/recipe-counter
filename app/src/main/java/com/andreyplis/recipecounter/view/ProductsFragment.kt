@@ -60,13 +60,13 @@ class ProductsFragment : Fragment() {
         }).attachToRecyclerView(recyclerView)
         adapter.listener = object : ProductsAdapter.ClickListener {
             override fun onItemClick(productEntity: ProductEntity) {
-                val action = ProductsFragmentDirections.actionProductsFragmentToSaveOrUpdateProductFragment(productEntity)
+                val action =
+                    ProductsFragmentDirections.actionProductsFragmentToSaveOrUpdateProductFragment(
+                        productEntity
+                    )
                 navController.navigate(action)
             }
         }
-
-
-
 
         return view
     }
