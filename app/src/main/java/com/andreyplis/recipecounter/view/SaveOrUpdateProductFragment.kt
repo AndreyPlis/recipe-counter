@@ -24,7 +24,7 @@ class SaveOrUpdateProductFragment : Fragment() {
 
     private lateinit var viewModel: ProductsViewModel
 
-    val args: SaveOrUpdateProductFragmentArgs by navArgs()
+    private val args: SaveOrUpdateProductFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

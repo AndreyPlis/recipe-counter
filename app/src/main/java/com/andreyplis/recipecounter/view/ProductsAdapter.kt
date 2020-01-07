@@ -51,9 +51,8 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductHolder>() {
         val product = getProduct(position)
         val measure = products[position].measure
         holder.textViewDescription.text = product.name
-        holder.textViewCount.text =
-            "${product.count} x $measure"
-        holder.textViewPrice.text = "${product.price}"
+        holder.textViewCount.text = "${product.count} x $measure"
+        holder.textViewPrice.text = "${product.price} P"
 
     }
 
