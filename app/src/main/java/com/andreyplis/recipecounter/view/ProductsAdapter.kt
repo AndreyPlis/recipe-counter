@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.andreyplis.recipecounter.R
+import com.andreyplis.recipecounter.db.ProductWithMeasure
 import com.andreyplis.recipecounter.db.entity.ProductEntity
 
 class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductHolder>() {
 
     lateinit var listener: ClickListener
 
-    var products = listOf<ProductEntity>()
+    var products = listOf<ProductWithMeasure>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -43,14 +44,15 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductHolder>() {
 
     override fun getItemCount(): Int = products.size
 
-    fun getProduct(position: Int): ProductEntity = products[position]
+    fun getProduct(position: Int): ProductEntity = products[position].productEntity
 
 
     override fun onBindViewHolder(holder: ProductHolder, position: Int) {
-        val product = products[position]
+        val product = getProduct(position)
+        val measure = products[position].measure
         holder.textViewDescription.text = product.name
         holder.textViewCount.text =
-            "${product.count} x ${product.measureId}"
+            "${product.count} x $measure"
         holder.textViewPrice.text = "${product.price}"
 
     }

@@ -10,12 +10,16 @@ import com.andreyplis.recipecounter.model.Measure
 @Entity(tableName = "measures")
 data class MeasureEntity(
     @PrimaryKey(autoGenerate = true)
-    override val id: Int?,
+    override val id: Int,
     override val measure: String
 ) : Measure, Parcelable {
 
+    override fun toString(): String {
+        return measure
+    }
+
     constructor(parcel: Parcel) : this(
-        parcel.readValue(Int::class.java.classLoader) as? Int,
+        parcel.readInt(),
         parcel.readString()!!
     ) {
     }

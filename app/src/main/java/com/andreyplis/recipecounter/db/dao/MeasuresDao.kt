@@ -17,5 +17,5 @@ interface MeasuresDao {
     fun delete(measureEntity: MeasureEntity)
 
     @Query("select * from measures order by measure")
-    fun getProducts(): LiveData<List<MeasureEntity>>
+    fun getMeasures(): LiveData<List<MeasureEntity>>
 }

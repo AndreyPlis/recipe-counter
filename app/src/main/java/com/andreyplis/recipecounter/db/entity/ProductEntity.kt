@@ -11,7 +11,7 @@ import com.andreyplis.recipecounter.model.Product
 
 @Entity(
     tableName = "products",
-    indices = [Index(value = arrayOf("measureId"), unique = true)],
+    indices = [Index(value = arrayOf("measureId"))],
     foreignKeys = [ForeignKey(
         entity = MeasureEntity::class,
         parentColumns = arrayOf("id"),
@@ -21,14 +21,14 @@ import com.andreyplis.recipecounter.model.Product
 )
 data class ProductEntity(
     @PrimaryKey(autoGenerate = true)
-    override val id: Long?,
+    override val id: Int = 0,
     override val name: String,
     override val measureId: Int,
     override val count: Int,
     override val price: Float
-) : Product,Parcelable {
+) : Product, Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readValue(Long::class.java.classLoader) as? Long,
+        parcel.readInt(),
         parcel.readString()!!,
         parcel.readInt(),
         parcel.readInt(),

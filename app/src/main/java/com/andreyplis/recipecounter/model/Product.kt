@@ -2,7 +2,7 @@ package com.andreyplis.recipecounter.model
 
 interface Product
 {
-    val id: Long?
+    val id: Int
     val name: String
     val count: Int
     val measureId:Int
