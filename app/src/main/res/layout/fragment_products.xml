@@ -11,7 +11,8 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/product_item"/>
+        android:clickable="false"
+        tools:listitem="@layout/product_item" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingButtonAddProduct"

@@ -19,10 +19,15 @@ class ProductsRepository(application: Application) {
         RepositoryTask(operation = { productsDao.insert(productEntity) }).execute()
     }
 
-    fun delete(productEntity: ProductEntity)
-    {
+    fun delete(productEntity: ProductEntity) {
         RepositoryTask(operation = {
             productsDao.delete(productEntity)
+        }).execute()
+    }
+
+    fun update(productEntity: ProductEntity) {
+        RepositoryTask(operation = {
+            productsDao.update(productEntity)
         }).execute()
     }
 

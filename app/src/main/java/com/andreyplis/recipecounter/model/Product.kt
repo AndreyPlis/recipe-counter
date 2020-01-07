@@ -2,10 +2,10 @@ package com.andreyplis.recipecounter.model
 
 interface Product
 {
-    val id: Int
+    val id: Long?
     val name: String
     val count: Int
-    val measure:String
+    val measureId:Int
     val price: Float
 
 }

@@ -1,11 +1,10 @@
 package com.andreyplis.recipecounter.view
 
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-
-
 import androidx.recyclerview.widget.RecyclerView
 import com.andreyplis.recipecounter.R
 import com.andreyplis.recipecounter.db.entity.ProductEntity
@@ -28,11 +27,8 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductHolder>() {
 
         init {
             itemView.setOnClickListener {
-                View.OnClickListener {
-                    if (adapterPosition != RecyclerView.NO_POSITION)
-                        listener.onItemClick(getProduct(adapterPosition)
-                        )
-                }
+                if (adapterPosition != RecyclerView.NO_POSITION)
+                    listener.onItemClick(getProduct(adapterPosition))
             }
         }
 
@@ -53,7 +49,8 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductHolder>() {
     override fun onBindViewHolder(holder: ProductHolder, position: Int) {
         val product = products[position]
         holder.textViewDescription.text = product.name
-        holder.textViewCount.text = "${product.count} x ${product.measure}"
+        holder.textViewCount.text =
+            "${product.count} x ${product.measureId}"
         holder.textViewPrice.text = "${product.price}"
 
     }

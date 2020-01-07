@@ -6,13 +6,21 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.andreyplis.recipecounter.db.dao.MeasuresDao
 import com.andreyplis.recipecounter.db.dao.ProductsDao
+import com.andreyplis.recipecounter.db.entity.MeasureEntity
 import com.andreyplis.recipecounter.db.entity.ProductEntity
 
-@Database(entities = [ProductEntity::class], version = 1)
+@Database(
+    entities = [ProductEntity::class, MeasureEntity::class],
+    version = 1,
+    exportSchema = false
+)
 abstract class ApplicationDatabase : RoomDatabase() {
 
     abstract fun getProductDao(): ProductsDao
+
+    abstract fun getMeasureDao(): MeasuresDao
 
 
     companion object {
@@ -33,11 +41,19 @@ abstract class ApplicationDatabase : RoomDatabase() {
 
         class task : AsyncTask<Unit, Unit, Unit>() {
             override fun doInBackground(vararg params: Unit?) {
-                instance.getProductDao().insert(ProductEntity(1, "lol", "kg", 1,1.0f))
+                instance.getMeasureDao().insert(MeasureEntity(1, "кг"))
+                instance.getMeasureDao().insert(MeasureEntity(2, "гр"))
+                instance.getMeasureDao().insert(MeasureEntity(3, "шт"))
+                instance.getMeasureDao().insert(MeasureEntity(4, "л"))
+                instance.getMeasureDao().insert(MeasureEntity(5, "мл"))
+
+
+
+                instance.getProductDao().insert(ProductEntity(1, "lol", 1, 1, 1.0f))
                 instance.getProductDao()
-                    .insert(ProductEntity(2, "lol2", "kg", 1,1.0f))
+                    .insert(ProductEntity(2, "lol2", 2, 1, 1.0f))
                 instance.getProductDao()
-                    .insert(ProductEntity(3, "lol3", "kg", 1,1.0f))
+                    .insert(ProductEntity(3, "lol3", 3, 1, 1.0f))
             }
 
         }

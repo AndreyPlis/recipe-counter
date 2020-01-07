@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.andreyplis.recipecounter.R
+import com.andreyplis.recipecounter.db.entity.ProductEntity
 import com.andreyplis.recipecounter.viewmodel.ProductsViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -57,11 +58,15 @@ class ProductsFragment : Fragment() {
             }
 
         }).attachToRecyclerView(recyclerView)
-        recyclerView.setOnClickListener {
-            navController.navigate(
-                R.id.action_productsFragment_to_addProductFragment
-            )
+        adapter.listener = object : ProductsAdapter.ClickListener {
+            override fun onItemClick(productEntity: ProductEntity) {
+                val action = ProductsFragmentDirections.actionProductsFragmentToSaveOrUpdateProductFragment(productEntity)
+                navController.navigate(action)
+            }
         }
+
+
+
 
         return view
     }
@@ -71,7 +76,7 @@ class ProductsFragment : Fragment() {
         navController = Navigation.findNavController(view)
         view.findViewById<FloatingActionButton>(R.id.floatingButtonAddProduct).setOnClickListener {
             navController.navigate(
-                R.id.action_productsFragment_to_addProductFragment
+                R.id.action_productsFragment_to_saveOrUpdateProductFragment
             )
         }
     }
