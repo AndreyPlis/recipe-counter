@@ -9,12 +9,7 @@ import com.andreyplis.recipecounter.db.entity.ProductEntity
 import com.andreyplis.recipecounter.repository.ProductsRepository
 
 class ProductsViewModel(application: Application) : AndroidViewModel(application) {
-    val productsRepository: ProductsRepository = ProductsRepository(application)
-
-
-    fun getProducts(): LiveData<List<ProductEntity>> {
-        return productsRepository.getProducts()
-    }
+    private val productsRepository: ProductsRepository = ProductsRepository(application)
 
 
     fun getMeasures():LiveData<List<MeasureEntity>> = productsRepository.measures
