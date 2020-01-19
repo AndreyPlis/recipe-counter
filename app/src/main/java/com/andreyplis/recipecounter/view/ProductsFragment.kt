@@ -2,12 +2,12 @@ package com.andreyplis.recipecounter.view
 
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -24,8 +24,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
  */
 class ProductsFragment : Fragment() {
 
-    lateinit var viewModel: ProductsViewModel
     lateinit var navController: NavController
+    lateinit var adapter: ProductsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,9 +35,9 @@ class ProductsFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_products, container, false)
         val recyclerView = view!!.findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this.context)
-        val adapter = ProductsAdapter()
+        adapter = ProductsAdapter()
         recyclerView.adapter = adapter
-        viewModel = ViewModelProviders.of(this).get(ProductsViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this).get(ProductsViewModel::class.java)
         viewModel.getProductsWithMeasure().observe(this, Observer {
             adapter.products = it
         })
@@ -68,7 +68,24 @@ class ProductsFragment : Fragment() {
             }
         }
 
+        setHasOptionsMenu(true)
         return view
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.search_menu,menu)
+        val searchItem = menu.findItem(R.id.action_search)
+        (searchItem.actionView as SearchView).setOnQueryTextListener(object:SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter.filter(newText)
+                return false
+            }
+
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
