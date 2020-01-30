@@ -1,16 +1,12 @@
-package com.andreyplis.recipecounter.view
+package com.andreyplis.recipecounter.view.products
 
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
-import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
-import com.andreyplis.recipecounter.R
-import com.andreyplis.recipecounter.db.ProductWithMeasure
-import com.andreyplis.recipecounter.db.entity.ProductEntity
+import android.view.*
+import android.widget.*
+import androidx.recyclerview.widget.*
+import com.andreyplis.recipecounter.*
+import com.andreyplis.recipecounter.db.*
+import com.andreyplis.recipecounter.db.entity.*
 
 
 

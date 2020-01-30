@@ -1,7 +1,7 @@
 package com.andreyplis.recipecounter.model
 
-import androidx.room.TypeConverters
-import com.andreyplis.recipecounter.db.entity.RecipeEntity
+import androidx.room.*
+import com.andreyplis.recipecounter.db.entity.*
 
 
 interface Recipe

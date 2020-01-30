@@ -1,22 +1,16 @@
-package com.andreyplis.recipecounter.view
+package com.andreyplis.recipecounter.view.products
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.Spinner
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.navArgs
+import android.os.*
+import android.view.*
+import android.widget.*
+import androidx.fragment.app.*
+import androidx.lifecycle.*
+import androidx.navigation.*
+import androidx.navigation.fragment.*
 import com.andreyplis.recipecounter.R
-import com.andreyplis.recipecounter.db.entity.MeasureEntity
-import com.andreyplis.recipecounter.db.entity.ProductEntity
-import com.andreyplis.recipecounter.viewmodel.ProductsViewModel
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.andreyplis.recipecounter.db.entity.*
+import com.andreyplis.recipecounter.viewmodel.*
+import com.google.android.material.floatingactionbutton.*
 
 
 class SaveOrUpdateProductFragment : Fragment() {

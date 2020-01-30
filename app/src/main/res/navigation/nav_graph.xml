@@ -13,10 +13,16 @@
         <action
             android:id="@+id/action_mainFragment_to_productsFragment"
             app:destination="@id/productsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_recipesFragment"
+            app:destination="@id/recipesFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_counterFragment"
+            app:destination="@id/counterFragment" />
     </fragment>
     <fragment
         android:id="@+id/productsFragment"
-        android:name="com.andreyplis.recipecounter.view.ProductsFragment"
+        android:name="com.andreyplis.recipecounter.view.products.ProductsFragment"
         android:label="fragment_products"
         tools:layout="@layout/fragment_products">
         <action
@@ -25,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/saveOrUpdateProductFragment"
-        android:name="com.andreyplis.recipecounter.view.SaveOrUpdateProductFragment"
+        android:name="com.andreyplis.recipecounter.view.products.SaveOrUpdateProductFragment"
         android:label="save_or_update_product_fragment"
         tools:layout="@layout/save_or_update_product_fragment">
         <action
@@ -39,4 +45,14 @@
             app:argType="com.andreyplis.recipecounter.db.entity.ProductEntity"
             app:nullable="true" />
     </fragment>
+    <fragment
+        android:id="@+id/recipesFragment"
+        android:name="com.andreyplis.recipecounter.view.recipes.RecipesFragment"
+        android:label="fragment_recipes"
+        tools:layout="@layout/fragment_recipes" />
+    <fragment
+        android:id="@+id/counterFragment"
+        android:name="com.andreyplis.recipecounter.view.counter.CounterFragment"
+        android:label="fragment_counter"
+        tools:layout="@layout/fragment_counter" />
 </navigation>

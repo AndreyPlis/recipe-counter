@@ -1,9 +1,9 @@
 package com.andreyplis.recipecounter.db.dao
 
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.*
 import androidx.room.*
-import com.andreyplis.recipecounter.db.ProductWithMeasure
-import com.andreyplis.recipecounter.db.entity.ProductEntity
+import com.andreyplis.recipecounter.db.*
+import com.andreyplis.recipecounter.db.entity.*
 
 @Dao
 interface ProductsDao {

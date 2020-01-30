@@ -1,12 +1,8 @@
 package com.andreyplis.recipecounter.db.entity
 
-import android.os.Parcel
-import android.os.Parcelable
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.Index
-import androidx.room.PrimaryKey
-import com.andreyplis.recipecounter.model.Product
+import android.os.*
+import androidx.room.*
+import com.andreyplis.recipecounter.model.*
 
 
 @Entity(

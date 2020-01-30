@@ -1,7 +1,7 @@
 package com.andreyplis.recipecounter.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import android.app.*
+import androidx.lifecycle.*
 
 class RecipesViewModel(application: Application) : AndroidViewModel(application){
 

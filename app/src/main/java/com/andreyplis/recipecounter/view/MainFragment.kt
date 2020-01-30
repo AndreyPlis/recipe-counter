@@ -1,14 +1,11 @@
 package com.andreyplis.recipecounter.view
 
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
-import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
+import android.os.*
+import android.view.*
+import android.widget.*
+import androidx.fragment.app.*
+import androidx.navigation.*
 import com.andreyplis.recipecounter.R
 
 /**
@@ -34,6 +31,16 @@ class MainFragment : Fragment() {
             navController.navigate(
             R.id.action_mainFragment_to_productsFragment
         ) }
+
+        view.findViewById<Button>(R.id.buttonRecipes).setOnClickListener {
+            navController.navigate(
+                R.id.action_mainFragment_to_recipesFragment
+            ) }
+
+        view.findViewById<Button>(R.id.buttonCalculator).setOnClickListener {
+            navController.navigate(
+                R.id.action_mainFragment_to_counterFragment
+            ) }
     }
 
 

@@ -1,6 +1,6 @@
 package com.andreyplis.recipecounter.db.entity
 
-import androidx.room.Entity
+import androidx.room.*
 
 @Entity(primaryKeys = ["recipeId", "productId"])
 data class RecipeProductEntity(

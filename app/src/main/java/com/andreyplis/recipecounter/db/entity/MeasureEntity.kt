@@ -1,10 +1,8 @@
 package com.andreyplis.recipecounter.db.entity
 
-import android.os.Parcel
-import android.os.Parcelable
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import com.andreyplis.recipecounter.model.Measure
+import android.os.*
+import androidx.room.*
+import com.andreyplis.recipecounter.model.*
 
 
 @Entity(tableName = "measures")

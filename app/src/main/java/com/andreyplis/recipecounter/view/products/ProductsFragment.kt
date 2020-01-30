@@ -1,23 +1,17 @@
-package com.andreyplis.recipecounter.view
+package com.andreyplis.recipecounter.view.products
 
 
-import android.os.Bundle
+import android.os.*
 import android.view.*
-import android.widget.SearchView
-import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import android.widget.*
+import androidx.fragment.app.*
+import androidx.lifecycle.*
+import androidx.navigation.*
+import androidx.recyclerview.widget.*
 import com.andreyplis.recipecounter.R
-import com.andreyplis.recipecounter.db.entity.ProductEntity
-import com.andreyplis.recipecounter.viewmodel.ProductsViewModel
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.andreyplis.recipecounter.db.entity.*
+import com.andreyplis.recipecounter.viewmodel.*
+import com.google.android.material.floatingactionbutton.*
 
 /**
  * A simple [Fragment] subclass.

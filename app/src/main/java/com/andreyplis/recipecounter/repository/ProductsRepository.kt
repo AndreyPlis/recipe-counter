@@ -1,14 +1,11 @@
 package com.andreyplis.recipecounter.repository
 
-import android.app.Application
-import android.os.AsyncTask
-import androidx.lifecycle.LiveData
-import com.andreyplis.recipecounter.db.ApplicationDatabase
-import com.andreyplis.recipecounter.db.ProductWithMeasure
-import com.andreyplis.recipecounter.db.dao.MeasuresDao
-import com.andreyplis.recipecounter.db.dao.ProductsDao
-import com.andreyplis.recipecounter.db.entity.MeasureEntity
-import com.andreyplis.recipecounter.db.entity.ProductEntity
+import android.app.*
+import android.os.*
+import androidx.lifecycle.*
+import com.andreyplis.recipecounter.db.*
+import com.andreyplis.recipecounter.db.dao.*
+import com.andreyplis.recipecounter.db.entity.*
 
 class ProductsRepository(application: Application) {
     private val productsDao: ProductsDao =

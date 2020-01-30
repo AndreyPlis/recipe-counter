@@ -1,12 +1,10 @@
 package com.andreyplis.recipecounter.viewmodel
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import com.andreyplis.recipecounter.db.ProductWithMeasure
-import com.andreyplis.recipecounter.db.entity.MeasureEntity
-import com.andreyplis.recipecounter.db.entity.ProductEntity
-import com.andreyplis.recipecounter.repository.ProductsRepository
+import android.app.*
+import androidx.lifecycle.*
+import com.andreyplis.recipecounter.db.*
+import com.andreyplis.recipecounter.db.entity.*
+import com.andreyplis.recipecounter.repository.*
 
 class ProductsViewModel(application: Application) : AndroidViewModel(application) {
     private val productsRepository: ProductsRepository = ProductsRepository(application)

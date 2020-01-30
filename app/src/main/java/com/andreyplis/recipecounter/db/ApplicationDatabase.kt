@@ -1,19 +1,11 @@
 package com.andreyplis.recipecounter.db
 
-import android.content.Context
-import android.os.AsyncTask
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
-import androidx.sqlite.db.SupportSQLiteDatabase
-import com.andreyplis.recipecounter.db.dao.MeasuresDao
-import com.andreyplis.recipecounter.db.dao.ProductsDao
-import com.andreyplis.recipecounter.db.dao.RecipesDao
-import com.andreyplis.recipecounter.db.entity.MeasureEntity
-import com.andreyplis.recipecounter.db.entity.ProductEntity
-import com.andreyplis.recipecounter.db.entity.RecipeEntity
-import com.andreyplis.recipecounter.db.entity.RecipeProductEntity
+import android.content.*
+import android.os.*
+import androidx.room.*
+import androidx.sqlite.db.*
+import com.andreyplis.recipecounter.db.dao.*
+import com.andreyplis.recipecounter.db.entity.*
 
 @Database(
     entities = [ProductEntity::class, MeasureEntity::class, RecipeEntity::class, RecipeProductEntity::class],

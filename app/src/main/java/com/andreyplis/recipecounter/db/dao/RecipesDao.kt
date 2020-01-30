@@ -1,10 +1,7 @@
 package com.andreyplis.recipecounter.db.dao
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Update
-import com.andreyplis.recipecounter.db.entity.RecipeEntity
+import androidx.room.*
+import com.andreyplis.recipecounter.db.entity.*
 
 @Dao
 interface RecipesDao

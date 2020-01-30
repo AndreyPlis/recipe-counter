@@ -1,7 +1,7 @@
 package com.andreyplis.recipecounter.db
 
-import androidx.room.Embedded
-import com.andreyplis.recipecounter.db.entity.ProductEntity
+import androidx.room.*
+import com.andreyplis.recipecounter.db.entity.*
 
 data class ProductWithMeasure
     (
