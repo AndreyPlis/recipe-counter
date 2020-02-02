@@ -2,6 +2,9 @@
     <string name="app_name">Recipe Counter</string>
     <string name="goods">Goods</string>
     <string name="recipes">Recipes</string>
+    <string name="recipe">Recipe</string>
+    <string name="price">Price</string>
+    <string name="weight">Weight</string>
     <string name="calculator">Calculator</string>
     <string name="description">Description</string>
     <string name="count">Count</string>
