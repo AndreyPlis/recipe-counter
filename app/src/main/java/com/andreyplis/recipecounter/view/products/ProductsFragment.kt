@@ -32,7 +32,7 @@ class ProductsFragment : Fragment() {
         adapter = ProductsAdapter()
         recyclerView.adapter = adapter
         val viewModel = ViewModelProviders.of(this).get(ProductsViewModel::class.java)
-        viewModel.getProductsWithMeasure().observe(this, Observer {
+        viewModel.getProductsWithMeasure().observe(viewLifecycleOwner, Observer {
             adapter.products = it
         })
 

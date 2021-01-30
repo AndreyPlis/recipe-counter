@@ -44,9 +44,12 @@ class SaveOrUpdateProductFragment : Fragment() {
             textPrice.text.append(product.price.toString())
         }
 
-        viewModel.getMeasures().observe(this, Observer {
+        viewModel.getMeasures().observe(viewLifecycleOwner, Observer {
             val adapter =
-                ArrayAdapter<MeasureEntity>(this.context!!, android.R.layout.simple_spinner_item)
+                ArrayAdapter<MeasureEntity>(
+                    this.requireContext(),
+                    android.R.layout.simple_spinner_item
+                )
             adapter.addAll(it)
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinnerMeasure.adapter = adapter
