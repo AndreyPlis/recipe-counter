@@ -8,7 +8,6 @@ import android.widget.*
 import androidx.fragment.app.*
 import androidx.navigation.*
 import com.andreyplis.recipecounter.R
-import com.andreyplis.recipecounter.model.*
 import com.google.android.material.floatingactionbutton.*
 
 /**
@@ -70,13 +69,13 @@ class RecipesFragment : Fragment() {
         }
         fabCake.setOnClickListener {
             val action =
-                RecipesFragmentDirections.actionRecipesFragmentToSaveOrUpdateRecipeFragment(Recipe.TYPE.CAKE.name)
+                RecipesFragmentDirections.actionRecipesFragmentToSaveOrUpdateRecipeDesertFragment()
             navController.navigate(action)
         }
 
         fabDesert.setOnClickListener {
             val action =
-                RecipesFragmentDirections.actionRecipesFragmentToSaveOrUpdateRecipeFragment(Recipe.TYPE.DESERT.name)
+                RecipesFragmentDirections.actionRecipesFragmentToSaveOrUpdateRecipeCakeFragment()
             navController.navigate(action)
         }
 

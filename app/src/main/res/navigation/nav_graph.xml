@@ -28,9 +28,6 @@
         <action
             android:id="@+id/action_productsFragment_to_saveOrUpdateProductFragment"
             app:destination="@id/saveOrUpdateProductFragment" />
-        <action
-            android:id="@+id/action_productsFragment_to_recipeProductsFragment"
-            app:destination="@id/recipeProductsFragment" />
     </fragment>
     <fragment
         android:id="@+id/saveOrUpdateProductFragment"
@@ -54,8 +51,11 @@
         android:label="fragment_recipes"
         tools:layout="@layout/fragment_recipes">
         <action
-            android:id="@+id/action_recipesFragment_to_saveOrUpdateRecipeFragment"
-            app:destination="@id/saveOrUpdateRecipeFragment" />
+            android:id="@+id/action_recipesFragment_to_saveOrUpdateRecipeDesertFragment"
+            app:destination="@id/saveOrUpdateRecipeDesertFragment" />
+        <action
+            android:id="@+id/action_recipesFragment_to_saveOrUpdateRecipeCakeFragment"
+            app:destination="@id/saveOrUpdateRecipeCakeFragment" />
     </fragment>
     <fragment
         android:id="@+id/counterFragment"
@@ -63,24 +63,14 @@
         android:label="fragment_counter"
         tools:layout="@layout/fragment_counter" />
     <fragment
-        android:id="@+id/saveOrUpdateRecipeFragment"
-        android:name="com.andreyplis.recipecounter.view.recipes.SaveOrUpdateRecipeFragment"
-        android:label="fragment_save_or_update_recipe"
-        tools:layout="@layout/fragment_save_or_update_recipe">
-        <argument
-            android:name="type"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_saveOrUpdateRecipeFragment_to_recipeProductsFragment"
-            app:destination="@id/recipeProductsFragment" />
-    </fragment>
+        android:id="@+id/saveOrUpdateRecipeDesertFragment"
+        android:name="com.andreyplis.recipecounter.view.recipes.SaveOrUpdateRecipeDesertFragment"
+        android:label="SaveOrUpdateRecipeDesertFragment"
+        tools:layout="@layout/fragment_recipe_desert" />
+
     <fragment
-        android:id="@+id/recipeProductsFragment"
-        android:name="com.andreyplis.recipecounter.view.recipes.RecipeProductsFragment"
-        android:label="fragment_recipe_products"
-        tools:layout="@layout/fragment_recipe_products" >
-        <action
-            android:id="@+id/action_recipeProductsFragment_to_productsFragment"
-            app:destination="@id/productsFragment" />
-    </fragment>
+        android:id="@+id/saveOrUpdateRecipeCakeFragment"
+        android:name="com.andreyplis.recipecounter.view.recipes.SaveOrUpdateRecipeCakeFragment"
+        android:label="SaveOrUpdateRecipeCakeDesertFragment"
+        tools:layout="@layout/fragment_recipe_cake" />
 </navigation>
