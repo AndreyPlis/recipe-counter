@@ -6,8 +6,13 @@ import android.view.*
 import android.view.animation.*
 import android.widget.*
 import androidx.fragment.app.*
+import androidx.lifecycle.*
 import androidx.navigation.*
+import androidx.recyclerview.widget.*
 import com.andreyplis.recipecounter.R
+import com.andreyplis.recipecounter.db.entity.*
+import com.andreyplis.recipecounter.view.products.*
+import com.andreyplis.recipecounter.viewmodel.*
 import com.google.android.material.floatingactionbutton.*
 
 /**
@@ -16,7 +21,7 @@ import com.google.android.material.floatingactionbutton.*
 class RecipesFragment : Fragment() {
 
     lateinit var navController: NavController
-
+    lateinit var adapter: RecipesAdapter
     var isOpen = false
 
     override fun onCreateView(
@@ -24,7 +29,60 @@ class RecipesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recipes, container, false)
+        val view = inflater.inflate(R.layout.fragment_recipes, container, false)
+        val recyclerView = view!!.findViewById<RecyclerView>(R.id.recyclerViewRecipes)
+        recyclerView.layoutManager = LinearLayoutManager(this.context)
+        adapter = RecipesAdapter()
+        recyclerView.adapter = adapter
+        val viewModel = ViewModelProviders.of(this).get(RecipesViewModel::class.java)
+        viewModel.getRecipes().observe(viewLifecycleOwner, Observer {
+            adapter.recipes = it
+        })
+
+        ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                viewModel.delete(adapter.getRecipe(viewHolder.adapterPosition))
+                Toast.makeText(this@RecipesFragment.context, "Product deleted", Toast.LENGTH_SHORT)
+                    .show()
+            }
+
+        }).attachToRecyclerView(recyclerView)
+        adapter.listener = object : RecipesAdapter.ClickListener {
+            override fun onItemClick(recipeEntity: RecipeEntity) {
+                val action =
+                    RecipesFragmentDirections.actionRecipesFragmentToSaveOrUpdateRecipeDesertFragment(
+                        recipeEntity
+                    )
+                navController.navigate(action)
+            }
+        }
+
+        setHasOptionsMenu(true)
+        return view
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.search_menu, menu)
+        val searchItem = menu.findItem(R.id.action_search)
+        (searchItem.actionView as SearchView).setOnQueryTextListener(object :
+            SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter.filter(newText)
+                return false
+            }
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

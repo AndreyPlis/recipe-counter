@@ -30,7 +30,7 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductHolder>(), F
 
     inner class ProductHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textViewDescription: TextView = itemView.findViewById(R.id.textViewDescription)
-        val textViewCount: TextView = itemView.findViewById(R.id.textViewCount)
+        val textViewCount: TextView = itemView.findViewById(R.id.textViewType)
         val textViewPrice: TextView = itemView.findViewById(R.id.textViewPrice)
 
         init {
