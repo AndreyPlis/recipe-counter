@@ -29,8 +29,8 @@ class MainFragment : Fragment() {
         navController = Navigation.findNavController(view)
         view.findViewById<Button>(R.id.buttonGoods).setOnClickListener {
             navController.navigate(
-            R.id.action_mainFragment_to_productsFragment
-        ) }
+                R.id.action_mainFragment_to_goodsFragment
+            ) }
 
         view.findViewById<Button>(R.id.buttonRecipes).setOnClickListener {
             navController.navigate(

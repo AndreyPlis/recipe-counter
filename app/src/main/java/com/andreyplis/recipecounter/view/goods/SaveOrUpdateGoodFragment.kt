@@ -1,4 +1,4 @@
-package com.andreyplis.recipecounter.view.products
+package com.andreyplis.recipecounter.view.goods
 
 import android.os.*
 import android.view.*
@@ -9,22 +9,23 @@ import androidx.navigation.*
 import androidx.navigation.fragment.*
 import com.andreyplis.recipecounter.R
 import com.andreyplis.recipecounter.db.entity.*
+import com.andreyplis.recipecounter.model.*
 import com.andreyplis.recipecounter.viewmodel.*
 import com.google.android.material.floatingactionbutton.*
 
 
-class SaveOrUpdateProductFragment : Fragment() {
+class SaveOrUpdateGoodFragment : Fragment() {
 
 
-    private lateinit var viewModel: ProductsViewModel
+    private lateinit var viewModel: GoodsViewModel
 
-    private val args: SaveOrUpdateProductFragmentArgs by navArgs()
+    private val args: SaveOrUpdateGoodFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.save_or_update_product_fragment, container, false)
+        return inflater.inflate(R.layout.save_or_update_good_fragment, container, false)
     }
 
 
@@ -34,35 +35,32 @@ class SaveOrUpdateProductFragment : Fragment() {
         val textDescription = view.findViewById<EditText>(R.id.editTextDescription)
         val textCount = view.findViewById<EditText>(R.id.editTextCount)
         val textPrice = view.findViewById<EditText>(R.id.editTextPrice)
-        viewModel = ViewModelProviders.of(this).get(ProductsViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(GoodsViewModel::class.java)
         val spinnerMeasure = view.findViewById<Spinner>(R.id.spinnerMeasure)
 
-        val product = args.product
-        if (product != null) {
-            textDescription.text.append(product.name)
-            textCount.text.append(product.count.toString())
-            textPrice.text.append(product.price.toString())
+        val good = args.good
+        if (good != null) {
+            textDescription.text.append(good.name)
+            textCount.text.append(good.count.toString())
+            textPrice.text.append(good.price.toString())
         }
 
-        viewModel.getMeasures().observe(viewLifecycleOwner, Observer {
-            val adapter =
-                ArrayAdapter<MeasureEntity>(
-                    this.requireContext(),
-                    android.R.layout.simple_spinner_item
-                )
-            adapter.addAll(it)
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinnerMeasure.adapter = adapter
-            if (product != null)
-                spinnerMeasure.setSelection(it.indexOfFirst { m -> m.id == product.measureId })
-        })
+
+        val adapter =
+            ArrayAdapter<String>(this.requireContext(), android.R.layout.simple_spinner_item)
+        adapter.addAll(Good.MEASURES.values)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerMeasure.adapter = adapter
+        if (good != null)
+            spinnerMeasure.setSelection(Good.MEASURES.values.indexOfFirst { Good.MEASURES[good.measure] == it })
 
         view.findViewById<FloatingActionButton>(R.id.floatingActionButtonApplyNewProduct)
             .setOnClickListener {
-                val id = (spinnerMeasure.selectedItem as MeasureEntity).id
-                if (product == null) {
+                val id =
+                    Good.MEASURES.entries.find { it.value == (spinnerMeasure.selectedItem as String) }!!.key
+                if (good == null) {
                     viewModel.insert(
-                        ProductEntity(
+                        GoodEntity(
                             0,
                             textDescription.text.toString(),
                             id,
@@ -71,17 +69,17 @@ class SaveOrUpdateProductFragment : Fragment() {
                         )
                     )
                 } else {
-                    val newProduct = product.copy(
+                    val newProduct = good.copy(
                         name = textDescription.text.toString(),
                         count = textCount.text.toString().toInt(),
-                        measureId = id,
+                        measure = id,
                         price = textPrice.text.toString().toFloat()
                     )
 
                     viewModel.update(newProduct)
                 }
                 navController.navigate(
-                    R.id.action_saveOrUpdateProductFragment_to_productsFragment
+                    R.id.action_saveOrUpdateGoodFragment_to_goodsFragment
                 )
             }
     }

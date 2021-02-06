@@ -11,8 +11,8 @@
         android:label="fragment_main"
         tools:layout="@layout/fragment_main">
         <action
-            android:id="@+id/action_mainFragment_to_productsFragment"
-            app:destination="@id/productsFragment" />
+            android:id="@+id/action_mainFragment_to_goodsFragment"
+            app:destination="@id/goodsFragment" />
         <action
             android:id="@+id/action_mainFragment_to_recipesFragment"
             app:destination="@id/recipesFragment" />
@@ -21,28 +21,28 @@
             app:destination="@id/counterFragment" />
     </fragment>
     <fragment
-        android:id="@+id/productsFragment"
-        android:name="com.andreyplis.recipecounter.view.products.ProductsFragment"
-        android:label="fragment_products"
-        tools:layout="@layout/fragment_products">
+        android:id="@+id/goodsFragment"
+        android:name="com.andreyplis.recipecounter.view.goods.GoodsFragment"
+        android:label="fragment_goods"
+        tools:layout="@layout/fragment_goods">
         <action
-            android:id="@+id/action_productsFragment_to_saveOrUpdateProductFragment"
-            app:destination="@id/saveOrUpdateProductFragment" />
+            android:id="@+id/action_goodsFragment_to_saveOrUpdateGoodFragment"
+            app:destination="@id/saveOrUpdateGoodFragment" />
     </fragment>
     <fragment
-        android:id="@+id/saveOrUpdateProductFragment"
-        android:name="com.andreyplis.recipecounter.view.products.SaveOrUpdateProductFragment"
-        android:label="save_or_update_product_fragment"
-        tools:layout="@layout/save_or_update_product_fragment">
+        android:id="@+id/saveOrUpdateGoodFragment"
+        android:name="com.andreyplis.recipecounter.view.goods.SaveOrUpdateGoodFragment"
+        android:label="save_or_update_good_fragment"
+        tools:layout="@layout/save_or_update_good_fragment">
         <action
-            android:id="@+id/action_saveOrUpdateProductFragment_to_productsFragment"
-            app:destination="@id/productsFragment"
-            app:popUpTo="@+id/productsFragment"
+            android:id="@+id/action_saveOrUpdateGoodFragment_to_goodsFragment"
+            app:destination="@id/goodsFragment"
+            app:popUpTo="@+id/goodsFragment"
             app:popUpToInclusive="true" />
         <argument
-            android:name="product"
+            android:name="good"
             android:defaultValue="@null"
-            app:argType="com.andreyplis.recipecounter.db.entity.ProductEntity"
+            app:argType="com.andreyplis.recipecounter.db.entity.GoodEntity"
             app:nullable="true" />
     </fragment>
     <fragment

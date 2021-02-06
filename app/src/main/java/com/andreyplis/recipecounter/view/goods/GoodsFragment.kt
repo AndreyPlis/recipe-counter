@@ -1,4 +1,4 @@
-package com.andreyplis.recipecounter.view.products
+package com.andreyplis.recipecounter.view.goods
 
 
 import android.os.*
@@ -16,23 +16,23 @@ import com.google.android.material.floatingactionbutton.*
 /**
  * A simple [Fragment] subclass.
  */
-class ProductsFragment : Fragment() {
+class GoodsFragment : Fragment() {
 
     lateinit var navController: NavController
-    lateinit var adapter: ProductsAdapter
+    lateinit var adapter: GoodsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_products, container, false)
+        val view = inflater.inflate(R.layout.fragment_goods, container, false)
         val recyclerView = view!!.findViewById<RecyclerView>(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this.context)
-        adapter = ProductsAdapter()
+        adapter = GoodsAdapter()
         recyclerView.adapter = adapter
-        val viewModel = ViewModelProviders.of(this).get(ProductsViewModel::class.java)
-        viewModel.getProductsWithMeasure().observe(viewLifecycleOwner, Observer {
+        val viewModel = ViewModelProviders.of(this).get(GoodsViewModel::class.java)
+        viewModel.getProducts().observe(viewLifecycleOwner, Observer {
             adapter.products = it
         })
 
@@ -47,16 +47,16 @@ class ProductsFragment : Fragment() {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 viewModel.delete(adapter.getProduct(viewHolder.adapterPosition))
-                Toast.makeText(this@ProductsFragment.context, "Product deleted", Toast.LENGTH_SHORT)
+                Toast.makeText(this@GoodsFragment.context, "Product deleted", Toast.LENGTH_SHORT)
                     .show()
             }
 
         }).attachToRecyclerView(recyclerView)
-        adapter.listener = object : ProductsAdapter.ClickListener {
-            override fun onItemClick(productEntity: ProductEntity) {
+        adapter.listener = object : GoodsAdapter.ClickListener {
+            override fun onItemClick(goodEntity: GoodEntity) {
                 val action =
-                    ProductsFragmentDirections.actionProductsFragmentToSaveOrUpdateProductFragment(
-                        productEntity
+                    GoodsFragmentDirections.actionGoodsFragmentToSaveOrUpdateGoodFragment(
+                        goodEntity
                     )
                 navController.navigate(action)
             }
@@ -87,7 +87,7 @@ class ProductsFragment : Fragment() {
         navController = Navigation.findNavController(view)
         view.findViewById<FloatingActionButton>(R.id.floatingButtonAddProduct).setOnClickListener {
             navController.navigate(
-                R.id.action_productsFragment_to_saveOrUpdateProductFragment
+                R.id.action_goodsFragment_to_saveOrUpdateGoodFragment
             )
         }
     }

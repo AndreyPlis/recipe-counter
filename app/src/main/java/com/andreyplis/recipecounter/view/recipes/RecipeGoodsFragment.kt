@@ -9,7 +9,7 @@ import com.andreyplis.recipecounter.*
 /**
  * A simple [Fragment] subclass.
  */
-class RecipeProductsFragment : Fragment() {
+class RecipeGoodsFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

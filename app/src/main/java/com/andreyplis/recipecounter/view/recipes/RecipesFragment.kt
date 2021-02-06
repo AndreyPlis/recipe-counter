@@ -11,7 +11,7 @@ import androidx.navigation.*
 import androidx.recyclerview.widget.*
 import com.andreyplis.recipecounter.R
 import com.andreyplis.recipecounter.db.entity.*
-import com.andreyplis.recipecounter.view.products.*
+import com.andreyplis.recipecounter.view.goods.*
 import com.andreyplis.recipecounter.viewmodel.*
 import com.google.android.material.floatingactionbutton.*
 

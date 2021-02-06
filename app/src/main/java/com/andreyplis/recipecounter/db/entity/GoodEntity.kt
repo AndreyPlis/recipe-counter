@@ -5,24 +5,15 @@ import androidx.room.*
 import com.andreyplis.recipecounter.model.*
 
 
-@Entity(
-    tableName = "products",
-    indices = [Index(value = arrayOf("measureId"))],
-    foreignKeys = [ForeignKey(
-        entity = MeasureEntity::class,
-        parentColumns = arrayOf("id"),
-        childColumns = arrayOf("measureId"),
-        onDelete = ForeignKey.CASCADE
-    )]
-)
-data class ProductEntity(
+@Entity(tableName = "goods")
+data class GoodEntity(
     @PrimaryKey(autoGenerate = true)
     override val id: Int = 0,
     override val name: String,
-    override val measureId: Int,
+    override val measure: Int,
     override val count: Int,
     override val price: Float
-) : Product, Parcelable {
+) : Good, Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readString()!!,
@@ -32,10 +23,11 @@ data class ProductEntity(
     ) {
     }
 
+
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeValue(id)
         parcel.writeString(name)
-        parcel.writeInt(measureId)
+        parcel.writeInt(measure)
         parcel.writeInt(count)
         parcel.writeFloat(price)
     }
@@ -44,12 +36,12 @@ data class ProductEntity(
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<ProductEntity> {
-        override fun createFromParcel(parcel: Parcel): ProductEntity {
-            return ProductEntity(parcel)
+    companion object CREATOR : Parcelable.Creator<GoodEntity> {
+        override fun createFromParcel(parcel: Parcel): GoodEntity {
+            return GoodEntity(parcel)
         }
 
-        override fun newArray(size: Int): Array<ProductEntity?> {
+        override fun newArray(size: Int): Array<GoodEntity?> {
             return arrayOfNulls(size)
         }
     }

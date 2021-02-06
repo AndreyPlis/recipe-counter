@@ -5,14 +5,14 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.products.ProductsFragment">
+    tools:context=".view.goods.GoodsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clickable="false"
-        tools:listitem="@layout/product_item" />
+        tools:listitem="@layout/good_item" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingButtonAddProduct"

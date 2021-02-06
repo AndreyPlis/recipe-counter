@@ -31,8 +31,8 @@ class RecipesRepository(application: Application) {
 
 
     companion object {
-        class RepositoryTask(val operation: () -> Unit) : AsyncTask<ProductEntity, Unit, Unit>() {
-            override fun doInBackground(vararg params: ProductEntity?) {
+        class RepositoryTask(val operation: () -> Unit) : AsyncTask<GoodEntity, Unit, Unit>() {
+            override fun doInBackground(vararg params: GoodEntity?) {
                 operation()
             }
 

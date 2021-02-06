@@ -17,7 +17,6 @@ public data class RecipeEntity(
     override val price: Float
 ) : Recipe, Parcelable {
 
-
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readString()!!,

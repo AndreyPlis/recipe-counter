@@ -1,27 +1,26 @@
-package com.andreyplis.recipecounter.view.products
+package com.andreyplis.recipecounter.view.goods
 
 
 import android.view.*
 import android.widget.*
 import androidx.recyclerview.widget.*
 import com.andreyplis.recipecounter.*
-import com.andreyplis.recipecounter.db.*
 import com.andreyplis.recipecounter.db.entity.*
+import com.andreyplis.recipecounter.model.*
 
 
-
-class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductHolder>(), Filterable {
+class GoodsAdapter : RecyclerView.Adapter<GoodsAdapter.ProductHolder>(), Filterable {
 
     lateinit var listener: ClickListener
 
 
-    var products = listOf<ProductWithMeasure>()
+    var products = listOf<GoodEntity>()
         set(value) {
             field = value
             resultProducts = value
         }
 
-    private var resultProducts = listOf<ProductWithMeasure>()
+    private var resultProducts = listOf<GoodEntity>()
         set(value) {
             field = value
             notifyDataSetChanged()
@@ -44,19 +43,19 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductHolder>(), F
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductHolder {
         val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.product_item, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.good_item, parent, false)
         return ProductHolder(itemView)
 
     }
 
     override fun getItemCount(): Int = resultProducts.size
 
-    fun getProduct(position: Int): ProductEntity = resultProducts[position].productEntity
+    fun getProduct(position: Int): GoodEntity = resultProducts[position]
 
 
     override fun onBindViewHolder(holder: ProductHolder, position: Int) {
         val product = getProduct(position)
-        val measure = resultProducts[position].measure
+        val measure = Good.MEASURES[resultProducts[position].measure]
         holder.textViewDescription.text = product.name
         holder.textViewCount.text = "${product.count} x $measure"
         holder.textViewPrice.text = "${product.price} P"
@@ -65,7 +64,7 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductHolder>(), F
 
 
     interface ClickListener {
-        fun onItemClick(productEntity: ProductEntity)
+        fun onItemClick(goodEntity: GoodEntity)
     }
 
     override fun getFilter(): Filter {
@@ -76,12 +75,12 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductHolder>(), F
     {
         override fun performFiltering(constraint: CharSequence?): FilterResults {
 
-            val filtered:List<ProductWithMeasure>
+            val filtered: List<GoodEntity>
             if (constraint == null || constraint.isEmpty()) {
                 filtered = products.toList()
             } else {
                 val search = constraint.toString().toLowerCase().trim()
-                filtered = products.filter { it.productEntity.name.toLowerCase().contains(search) }
+                filtered = products.filter { it.name.toLowerCase().contains(search) }
             }
 
             val results = FilterResults()
@@ -91,7 +90,7 @@ class ProductsAdapter : RecyclerView.Adapter<ProductsAdapter.ProductHolder>(), F
         }
 
         override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-            resultProducts = results?.values as List<ProductWithMeasure>
+            resultProducts = results?.values as List<GoodEntity>
         }
 
     }
