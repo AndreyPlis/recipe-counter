@@ -5,6 +5,7 @@ import android.widget.*
 import androidx.recyclerview.widget.*
 import com.andreyplis.recipecounter.*
 import com.andreyplis.recipecounter.db.entity.*
+import com.andreyplis.recipecounter.model.*
 
 class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.RecipeHolder>(), Filterable {
 
@@ -30,6 +31,7 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.RecipeHolder>(), Filt
         val textViewDescription: TextView = itemView.findViewById(R.id.textViewDescription)
         val textViewType: TextView = itemView.findViewById(R.id.textViewType)
         val textViewPrice: TextView = itemView.findViewById(R.id.textViewPrice)
+        val textViewInfo: TextView = itemView.findViewById(R.id.textViewInfo)
 
         init {
             itemView.setOnClickListener {
@@ -51,6 +53,10 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.RecipeHolder>(), Filt
         holder.textViewDescription.text = recipe.description
         holder.textViewType.text = recipe.type.name
         holder.textViewPrice.text = "${recipe.price} P"
+        if (recipe.type == Recipe.TYPE.DESERT)
+            holder.textViewInfo.text = "${recipe.measure} шт"
+        else
+            holder.textViewInfo.text = "${recipe.measure} г диаметр ${recipe.diameter}"
     }
 
     override fun getItemCount(): Int = resultRecipes.size

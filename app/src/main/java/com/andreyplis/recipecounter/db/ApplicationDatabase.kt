@@ -44,8 +44,8 @@ abstract class ApplicationDatabase : RoomDatabase() {
                 instance.getProductDao()
                     .insert(GoodEntity(3, "Соль", 3, 1, 1.0f))
 
-                instance.getRecipesDao().insert(RecipeEntity(0, "зефир", Recipe.TYPE.DESERT, 0, 0, 5, 600f))
-                instance.getRecipesDao().insert(RecipeEntity(1, "пряная вишня", Recipe.TYPE.CAKE, 2000, 20, 0, 600f))
+                instance.getRecipesDao().insert(RecipeEntity(1, "зефир", Recipe.TYPE.DESERT, 5, 0, 600f))
+                instance.getRecipesDao().insert(RecipeEntity(2, "пряная вишня", Recipe.TYPE.CAKE, 2000, 20, 600f))
             }
 
         }

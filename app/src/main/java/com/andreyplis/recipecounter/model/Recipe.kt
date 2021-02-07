@@ -15,8 +15,7 @@ interface Recipe
     val id: Int?
     val description: String
     val type: TYPE
-    val count: Int
-    val weight: Int
+    val measure: Int
     val diameter: Int
     val price: Float
 }

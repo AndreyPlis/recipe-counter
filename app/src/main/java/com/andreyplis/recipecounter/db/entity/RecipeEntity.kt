@@ -10,9 +10,8 @@ public data class RecipeEntity(
     override val id: Int = 0,
     override val description: String,
     override val type: Recipe.TYPE,
-    override val weight: Int,
+    override val measure: Int,
     override val diameter: Int,
-    override val count: Int,
     override val price: Float
 ) : Recipe, Parcelable {
 
@@ -20,7 +19,6 @@ public data class RecipeEntity(
         parcel.readInt(),
         parcel.readString()!!,
         RecipeTypeConverter.fromString(parcel.readString()!!),
-        parcel.readInt(),
         parcel.readInt(),
         parcel.readInt(),
         parcel.readFloat()
@@ -42,9 +40,8 @@ public data class RecipeEntity(
         parcel.writeInt(id)
         parcel.writeString(description)
         parcel.writeString(RecipeTypeConverter.toString(type))
-        parcel.writeInt(weight)
+        parcel.writeInt(measure)
         parcel.writeInt(diameter)
-        parcel.writeInt(count)
         parcel.writeFloat(price)
     }
 
