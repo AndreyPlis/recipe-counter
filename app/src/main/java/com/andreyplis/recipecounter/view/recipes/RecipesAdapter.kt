@@ -54,9 +54,9 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.RecipeHolder>(), Filt
         holder.textViewType.text = recipe.type.name
         holder.textViewPrice.text = "${recipe.price} P"
         if (recipe.type == Recipe.TYPE.DESERT)
-            holder.textViewInfo.text = "${recipe.measure} шт"
+            holder.textViewInfo.text = "${recipe.count} шт"
         else
-            holder.textViewInfo.text = "${recipe.measure} г диаметр ${recipe.diameter}"
+            holder.textViewInfo.text = "${recipe.count} г диаметр ${recipe.diameter}"
     }
 
     override fun getItemCount(): Int = resultRecipes.size

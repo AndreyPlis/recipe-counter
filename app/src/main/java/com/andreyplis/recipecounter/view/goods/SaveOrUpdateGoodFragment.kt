@@ -54,7 +54,7 @@ class SaveOrUpdateGoodFragment : Fragment() {
         if (good != null)
             spinnerMeasure.setSelection(Good.MEASURES.values.indexOfFirst { Good.MEASURES[good.measure] == it })
 
-        view.findViewById<FloatingActionButton>(R.id.floatingActionButtonApplyNewProduct)
+        view.findViewById<FloatingActionButton>(R.id.floatingActionButtonApplyNewGood)
             .setOnClickListener {
                 val id =
                     Good.MEASURES.entries.find { it.value == (spinnerMeasure.selectedItem as String) }!!.key
