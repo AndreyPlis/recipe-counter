@@ -15,6 +15,6 @@ interface RecipesDao {
     @Delete
     fun delete(recipe: RecipeEntity)
 
-    @Query("select * from recipes order by recipes.name")
+    @Query("select * from recipes order by recipes.description")
     fun getRecipes(): LiveData<List<RecipeEntity>>
 }

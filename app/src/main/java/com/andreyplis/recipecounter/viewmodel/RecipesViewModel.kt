@@ -15,4 +15,13 @@ class RecipesViewModel(application: Application) : AndroidViewModel(application)
         recipeRepository.delete(recipe)
     }
 
+
+    fun insert(recipe: RecipeEntity) {
+        recipeRepository.insert(recipe)
+    }
+
+    fun update(recipe: RecipeEntity) {
+        recipeRepository.update(recipe)
+    }
+
 }

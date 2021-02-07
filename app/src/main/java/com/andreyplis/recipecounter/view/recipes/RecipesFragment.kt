@@ -9,8 +9,10 @@ import androidx.fragment.app.*
 import androidx.lifecycle.*
 import androidx.navigation.*
 import androidx.recyclerview.widget.*
+import com.andreyplis.recipecounter.*
 import com.andreyplis.recipecounter.R
 import com.andreyplis.recipecounter.db.entity.*
+import com.andreyplis.recipecounter.model.*
 import com.andreyplis.recipecounter.view.goods.*
 import com.andreyplis.recipecounter.viewmodel.*
 import com.google.android.material.floatingactionbutton.*
@@ -50,17 +52,18 @@ class RecipesFragment : Fragment() {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 viewModel.delete(adapter.getRecipe(viewHolder.adapterPosition))
-                Toast.makeText(this@RecipesFragment.context, "Product deleted", Toast.LENGTH_SHORT)
+                Toast.makeText(this@RecipesFragment.context, "Recipe deleted", Toast.LENGTH_SHORT)
                     .show()
             }
 
         }).attachToRecyclerView(recyclerView)
         adapter.listener = object : RecipesAdapter.ClickListener {
             override fun onItemClick(recipeEntity: RecipeEntity) {
-                val action =
-                    RecipesFragmentDirections.actionRecipesFragmentToSaveOrUpdateRecipeDesertFragment(
-                        recipeEntity
-                    )
+                val action: NavDirections
+                if (recipeEntity.type == Recipe.TYPE.DESERT)
+                    action = RecipesFragmentDirections.actionRecipesFragmentToSaveOrUpdateRecipeDesertFragment(recipeEntity)
+                else
+                    action = RecipesFragmentDirections.actionRecipesFragmentToSaveOrUpdateRecipeCakeFragment(recipeEntity)
                 navController.navigate(action)
             }
         }

@@ -48,7 +48,7 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.RecipeHolder>(), Filt
 
     override fun onBindViewHolder(holder: RecipeHolder, position: Int) {
         val recipe = getRecipe(position)
-        holder.textViewDescription.text = recipe.name
+        holder.textViewDescription.text = recipe.description
         holder.textViewType.text = recipe.type.name
         holder.textViewPrice.text = "${recipe.price} P"
     }
@@ -69,7 +69,7 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.RecipeHolder>(), Filt
                 filtered = recipes.toList()
             } else {
                 val search = constraint.toString().toLowerCase().trim()
-                filtered = recipes.filter { it.name.toLowerCase().contains(search) }
+                filtered = recipes.filter { it.description.toLowerCase().contains(search) }
             }
 
             val results = FilterResults()

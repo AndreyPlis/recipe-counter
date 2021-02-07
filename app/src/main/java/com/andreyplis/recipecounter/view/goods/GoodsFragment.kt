@@ -47,7 +47,7 @@ class GoodsFragment : Fragment() {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 viewModel.delete(adapter.getProduct(viewHolder.adapterPosition))
-                Toast.makeText(this@GoodsFragment.context, "Product deleted", Toast.LENGTH_SHORT)
+                Toast.makeText(this@GoodsFragment.context, "Good deleted", Toast.LENGTH_SHORT)
                     .show()
             }
 

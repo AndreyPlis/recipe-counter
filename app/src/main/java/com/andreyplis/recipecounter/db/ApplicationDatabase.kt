@@ -6,6 +6,7 @@ import androidx.room.*
 import androidx.sqlite.db.*
 import com.andreyplis.recipecounter.db.dao.*
 import com.andreyplis.recipecounter.db.entity.*
+import com.andreyplis.recipecounter.model.*
 
 @Database(
     entities = [GoodEntity::class, RecipeEntity::class, RecipeGoodEntity::class],
@@ -37,11 +38,14 @@ abstract class ApplicationDatabase : RoomDatabase() {
 
         class task : AsyncTask<Unit, Unit, Unit>() {
             override fun doInBackground(vararg params: Unit?) {
-                instance.getProductDao().insert(GoodEntity(1, "lol", 1, 1, 1.0f))
+                instance.getProductDao().insert(GoodEntity(1, "Сахар", 1, 1, 1.0f))
                 instance.getProductDao()
-                    .insert(GoodEntity(2, "lol2", 2, 1, 1.0f))
+                    .insert(GoodEntity(2, "Мука", 2, 1, 1.0f))
                 instance.getProductDao()
-                    .insert(GoodEntity(3, "lol3", 3, 1, 1.0f))
+                    .insert(GoodEntity(3, "Соль", 3, 1, 1.0f))
+
+                instance.getRecipesDao().insert(RecipeEntity(0, "зефир", Recipe.TYPE.DESERT, 0, 0, 5, 600f))
+                instance.getRecipesDao().insert(RecipeEntity(1, "пряная вишня", Recipe.TYPE.CAKE, 2000, 20, 0, 600f))
             }
 
         }

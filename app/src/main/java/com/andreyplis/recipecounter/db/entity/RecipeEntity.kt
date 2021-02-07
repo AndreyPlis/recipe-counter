@@ -8,7 +8,6 @@ import com.andreyplis.recipecounter.model.*
 public data class RecipeEntity(
     @PrimaryKey(autoGenerate = true)
     override val id: Int = 0,
-    override val name: String,
     override val description: String,
     override val type: Recipe.TYPE,
     override val weight: Int,
@@ -19,7 +18,6 @@ public data class RecipeEntity(
 
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
-        parcel.readString()!!,
         parcel.readString()!!,
         RecipeTypeConverter.fromString(parcel.readString()!!),
         parcel.readInt(),
@@ -42,7 +40,6 @@ public data class RecipeEntity(
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeInt(id)
-        parcel.writeString(name)
         parcel.writeString(description)
         parcel.writeString(RecipeTypeConverter.toString(type))
         parcel.writeInt(weight)

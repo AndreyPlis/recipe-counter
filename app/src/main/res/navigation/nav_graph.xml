@@ -72,11 +72,23 @@
             android:defaultValue="@null"
             app:argType="com.andreyplis.recipecounter.db.entity.RecipeEntity"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_saveOrUpdateRecipeDesertFragment_to_recipesFragment"
+            app:destination="@id/recipesFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/saveOrUpdateRecipeCakeFragment"
         android:name="com.andreyplis.recipecounter.view.recipes.SaveOrUpdateRecipeCakeFragment"
         android:label="SaveOrUpdateRecipeCakeDesertFragment"
-        tools:layout="@layout/fragment_recipe_cake" />
+        tools:layout="@layout/fragment_recipe_cake">
+        <argument
+            android:name="recipe"
+            android:defaultValue="@null"
+            app:argType="com.andreyplis.recipecounter.db.entity.RecipeEntity"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_saveOrUpdateRecipeCakeFragment_to_recipesFragment"
+            app:destination="@id/recipesFragment" />
+    </fragment>
 </navigation>
