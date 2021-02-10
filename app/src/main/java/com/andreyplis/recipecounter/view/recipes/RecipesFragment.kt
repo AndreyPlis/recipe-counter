@@ -66,6 +66,12 @@ class RecipesFragment : Fragment() {
                     action = RecipesFragmentDirections.actionRecipesFragmentToSaveOrUpdateRecipeCakeFragment(recipeEntity)
                 navController.navigate(action)
             }
+
+            override fun onLongItemClick(recipeEntity: RecipeEntity): Boolean {
+                Toast.makeText(this@RecipesFragment.context, "Recipe edited", Toast.LENGTH_SHORT)
+                    .show()
+                return true
+            }
         }
 
         setHasOptionsMenu(true)

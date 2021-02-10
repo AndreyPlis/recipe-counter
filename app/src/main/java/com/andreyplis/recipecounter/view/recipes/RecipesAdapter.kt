@@ -25,6 +25,8 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.RecipeHolder>(), Filt
 
     interface ClickListener {
         fun onItemClick(recipeEntity: RecipeEntity)
+
+        fun onLongItemClick(recipeEntity: RecipeEntity): Boolean
     }
 
     inner class RecipeHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -37,6 +39,11 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.RecipeHolder>(), Filt
             itemView.setOnClickListener {
                 if (adapterPosition != RecyclerView.NO_POSITION)
                     listener.onItemClick(getRecipe(adapterPosition))
+            }
+            itemView.setOnLongClickListener {
+                if (adapterPosition != RecyclerView.NO_POSITION)
+                    return@setOnLongClickListener listener.onLongItemClick(getRecipe(adapterPosition))
+                return@setOnLongClickListener false
             }
         }
 
