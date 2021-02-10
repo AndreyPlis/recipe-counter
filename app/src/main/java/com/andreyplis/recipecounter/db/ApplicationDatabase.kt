@@ -18,6 +18,8 @@ abstract class ApplicationDatabase : RoomDatabase() {
 
     abstract fun getProductDao(): GoodsDao
 
+    abstract fun getRecipeGoodsDao(): RecipeGoodsDao
+
     abstract fun getRecipesDao(): RecipesDao
 
     companion object {

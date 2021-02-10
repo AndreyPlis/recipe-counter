@@ -56,6 +56,9 @@
         <action
             android:id="@+id/action_recipesFragment_to_saveOrUpdateRecipeCakeFragment"
             app:destination="@id/saveOrUpdateRecipeCakeFragment" />
+        <action
+            android:id="@+id/action_recipesFragment_to_recipeGoodsFragment"
+            app:destination="@id/recipeGoodsFragment" />
     </fragment>
     <fragment
         android:id="@+id/counterFragment"
@@ -90,5 +93,13 @@
         <action
             android:id="@+id/action_saveOrUpdateRecipeCakeFragment_to_recipesFragment"
             app:destination="@id/recipesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipeGoodsFragment"
+        android:name="com.andreyplis.recipecounter.view.recipes.RecipeGoodsFragment"
+        android:label="RecipeGoodsFragment">
+        <argument
+            android:name="recipe"
+            app:argType="com.andreyplis.recipecounter.db.entity.RecipeEntity" />
     </fragment>
 </navigation>

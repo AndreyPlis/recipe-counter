@@ -16,7 +16,7 @@ import com.google.android.material.floatingactionbutton.*
 /**
  * A simple [Fragment] subclass.
  */
-class GoodsFragment : Fragment() {
+open class GoodsFragment : Fragment() {
 
     lateinit var navController: NavController
     lateinit var adapter: GoodsAdapter

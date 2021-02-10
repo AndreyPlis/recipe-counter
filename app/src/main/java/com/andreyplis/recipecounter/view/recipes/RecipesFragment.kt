@@ -68,8 +68,8 @@ class RecipesFragment : Fragment() {
             }
 
             override fun onLongItemClick(recipeEntity: RecipeEntity): Boolean {
-                Toast.makeText(this@RecipesFragment.context, "Recipe edited", Toast.LENGTH_SHORT)
-                    .show()
+                val action = RecipesFragmentDirections.actionRecipesFragmentToRecipeGoodsFragment(recipeEntity)
+                navController.navigate(action)
                 return true
             }
         }
