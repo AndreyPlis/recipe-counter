@@ -2,6 +2,7 @@ package com.andreyplis.recipecounter.view.recipes
 
 
 import android.os.*
+import android.util.*
 import android.view.*
 import android.view.animation.*
 import android.widget.*
@@ -59,16 +60,17 @@ class RecipesFragment : Fragment() {
         }).attachToRecyclerView(recyclerView)
         adapter.listener = object : RecipesAdapter.ClickListener {
             override fun onItemClick(recipeEntity: RecipeEntity) {
+                val action = RecipesFragmentDirections.actionRecipesFragmentToRecipeGoodsFragment(recipeEntity)
+                navController.navigate(action)
+
+            }
+
+            override fun onLongItemClick(recipeEntity: RecipeEntity): Boolean {
                 val action: NavDirections
                 if (recipeEntity.type == Recipe.TYPE.DESERT)
                     action = RecipesFragmentDirections.actionRecipesFragmentToSaveOrUpdateRecipeDesertFragment(recipeEntity)
                 else
                     action = RecipesFragmentDirections.actionRecipesFragmentToSaveOrUpdateRecipeCakeFragment(recipeEntity)
-                navController.navigate(action)
-            }
-
-            override fun onLongItemClick(recipeEntity: RecipeEntity): Boolean {
-                val action = RecipesFragmentDirections.actionRecipesFragmentToRecipeGoodsFragment(recipeEntity)
                 navController.navigate(action)
                 return true
             }

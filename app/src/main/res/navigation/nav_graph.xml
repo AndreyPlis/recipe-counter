@@ -97,7 +97,8 @@
     <fragment
         android:id="@+id/recipeGoodsFragment"
         android:name="com.andreyplis.recipecounter.view.recipes.RecipeGoodsFragment"
-        android:label="RecipeGoodsFragment">
+        android:label="RecipeGoodsFragment"
+        tools:layout="@layout/fragment_recipe_goods">
         <argument
             android:name="recipe"
             app:argType="com.andreyplis.recipecounter.db.entity.RecipeEntity" />
