@@ -76,9 +76,7 @@ class RecipeGoodsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
         view.findViewById<FloatingActionButton>(R.id.floatingButtonAddProduct).setOnClickListener {
-            /*navController.navigate(
-                R.id.action_goodsFragment_to_saveOrUpdateGoodFragment
-            )*/
+            navController.navigate(RecipeGoodsFragmentDirections.actionRecipeGoodsFragmentToAddGoodFragment(args.recipe))
         }
     }
 

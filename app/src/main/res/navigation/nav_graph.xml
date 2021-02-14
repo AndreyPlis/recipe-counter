@@ -102,5 +102,20 @@
         <argument
             android:name="recipe"
             app:argType="com.andreyplis.recipecounter.db.entity.RecipeEntity" />
+        <action
+            android:id="@+id/action_recipeGoodsFragment_to_addGoodFragment"
+            app:destination="@id/addGoodFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addGoodFragment"
+        android:name="com.andreyplis.recipecounter.view.recipes.AddGoodFragment"
+        android:label="AddGoodFragment"
+        tools:layout="@layout/fragment_add_good">
+        <argument
+            android:name="recipe"
+            app:argType="com.andreyplis.recipecounter.db.entity.RecipeEntity" />
+        <action
+            android:id="@+id/action_addGoodFragment_to_recipeGoodsFragment"
+            app:destination="@id/recipeGoodsFragment" />
     </fragment>
 </navigation>
