@@ -46,20 +46,18 @@ class SaveOrUpdateRecipeDesertFragment : Fragment() {
         if (recipe != null) {
             textDescription.text.append(recipe.description)
             textCount.text.append(recipe.count.toString())
-            textPrice.text.append(recipe.price.toString())
         }
 
         view.findViewById<FloatingActionButton>(R.id.floatingActionButtonApplyNewDesert)
             .setOnClickListener {
                 if (recipe == null) {
                     viewModel.insert(
-                        RecipeEntity(0, textDescription.text.toString(), Recipe.TYPE.DESERT, textCount.text.toString().toInt(), 0, textPrice.text.toString().toFloat())
+                        RecipeEntity(0, textDescription.text.toString(), Recipe.TYPE.DESERT, textCount.text.toString().toInt(), 0)
                     )
                 } else {
                     val newProduct = recipe.copy(
                         description = textDescription.text.toString(),
                         count = textCount.text.toString().toInt(),
-                        price = textPrice.text.toString().toFloat()
                     )
 
                     viewModel.update(newProduct)

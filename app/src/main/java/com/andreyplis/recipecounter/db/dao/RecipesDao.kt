@@ -17,4 +17,7 @@ interface RecipesDao {
 
     @Query("select * from recipes order by recipes.description")
     fun getRecipes(): LiveData<List<RecipeEntity>>
+
+    @Query("select * from recipes WHERE recipes.id =:recipe")
+    fun getRecipe(recipe: Int): RecipeEntity
 }

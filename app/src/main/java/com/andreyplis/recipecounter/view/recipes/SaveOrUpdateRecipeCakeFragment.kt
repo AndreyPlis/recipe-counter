@@ -34,7 +34,6 @@ class SaveOrUpdateRecipeCakeFragment : Fragment() {
         val navController = Navigation.findNavController(view)
         val textDescription = view.findViewById<EditText>(R.id.editTextDescription)
         val textCount = view.findViewById<EditText>(R.id.editTextCount)
-        val textPrice = view.findViewById<EditText>(R.id.editTextPrice)
         val textDiameter = view.findViewById<EditText>(R.id.editTextDiameter)
         viewModel = ViewModelProviders.of(this).get(RecipesViewModel::class.java)
 
@@ -42,7 +41,6 @@ class SaveOrUpdateRecipeCakeFragment : Fragment() {
         if (recipe != null) {
             textDescription.text.append(recipe.description)
             textCount.text.append(recipe.count.toString())
-            textPrice.text.append(recipe.price.toString())
             textDiameter.text.append(recipe.diameter.toString())
         }
 
@@ -50,14 +48,13 @@ class SaveOrUpdateRecipeCakeFragment : Fragment() {
             .setOnClickListener {
                 if (recipe == null) {
                     viewModel.insert(
-                        RecipeEntity(0, textDescription.text.toString(), Recipe.TYPE.DESERT, textCount.text.toString().toInt(), textDiameter.text.toString().toInt(), textPrice.text.toString().toFloat())
+                        RecipeEntity(0, textDescription.text.toString(), Recipe.TYPE.DESERT, textCount.text.toString().toInt(), textDiameter.text.toString().toInt())
                     )
                 } else {
                     val newProduct = recipe.copy(
                         description = textDescription.text.toString(),
                         count = textCount.text.toString().toInt(),
-                        diameter = textDiameter.text.toString().toInt(),
-                        price = textPrice.text.toString().toFloat()
+                        diameter = textDiameter.text.toString().toInt()
                     )
 
                     viewModel.update(newProduct)

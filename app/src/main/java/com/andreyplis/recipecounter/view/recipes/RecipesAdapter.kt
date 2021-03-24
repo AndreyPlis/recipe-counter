@@ -32,7 +32,6 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.RecipeHolder>(), Filt
     inner class RecipeHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textViewDescription: TextView = itemView.findViewById(R.id.textViewDescription)
         val textViewType: TextView = itemView.findViewById(R.id.textViewType)
-        val textViewPrice: TextView = itemView.findViewById(R.id.textViewPrice)
         val textViewInfo: TextView = itemView.findViewById(R.id.textViewInfo)
 
         init {
@@ -59,7 +58,6 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.RecipeHolder>(), Filt
         val recipe = getRecipe(position)
         holder.textViewDescription.text = recipe.description
         holder.textViewType.text = recipe.type.name
-        holder.textViewPrice.text = "${recipe.price} P"
         if (recipe.type == Recipe.TYPE.DESERT)
             holder.textViewInfo.text = "${recipe.count} шт"
         else

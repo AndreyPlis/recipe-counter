@@ -17,5 +17,4 @@ interface Recipe
     val type: TYPE
     val count: Int
     val diameter: Int
-    val price: Float
 }
