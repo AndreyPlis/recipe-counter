@@ -40,7 +40,7 @@ abstract class ApplicationDatabase : RoomDatabase() {
 
         class task : AsyncTask<Unit, Unit, Unit>() {
             override fun doInBackground(vararg params: Unit?) {
-                instance.getProductDao().insert(GoodEntity(1, "Сахар", 1, 1, 1.0f))
+                instance.getProductDao().insert(GoodEntity(1, "Сахар", 1, 1, 50.0f))
                 instance.getProductDao()
                     .insert(GoodEntity(2, "Мука", 2, 1, 1.0f))
                 instance.getProductDao()
@@ -52,6 +52,10 @@ abstract class ApplicationDatabase : RoomDatabase() {
 
                 instance.getRecipeGoodsDao().insert(RecipeGoodEntity(1, 1, 50))
                 instance.getRecipeGoodsDao().insert(RecipeGoodEntity(1, 2, 100))
+
+
+                instance.getRecipeGoodsDao().insert(RecipeGoodEntity(2, 1, 50))
+                instance.getRecipeGoodsDao().insert(RecipeGoodEntity(2, 2, 100))
             }
 
         }

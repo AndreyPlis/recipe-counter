@@ -17,6 +17,7 @@ class RecipeGoodsRepository(application: Application) {
         return recipeGoodsDao.getRecipeWithGoods(recipe)
     }
 
+
     fun insert(recipeGoodEntity: RecipeGoodEntity) {
         RepositoryTask(operation = {
             recipeGoodsDao.insert(recipeGoodEntity)

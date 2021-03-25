@@ -36,11 +36,6 @@ class MainFragment : Fragment() {
             navController.navigate(
                 R.id.action_mainFragment_to_recipesFragment
             ) }
-
-        view.findViewById<Button>(R.id.buttonCalculator).setOnClickListener {
-            navController.navigate(
-                R.id.action_mainFragment_to_counterFragment
-            ) }
     }
 
 

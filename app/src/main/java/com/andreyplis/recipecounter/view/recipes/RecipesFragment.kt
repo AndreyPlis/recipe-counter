@@ -42,7 +42,7 @@ class RecipesFragment : Fragment() {
             adapter.recipes = it
         })
 
-        ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+        ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT or ItemTouchHelper.LEFT) {
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
@@ -52,9 +52,15 @@ class RecipesFragment : Fragment() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                viewModel.delete(adapter.getRecipe(viewHolder.adapterPosition))
-                Toast.makeText(this@RecipesFragment.context, "Recipe deleted", Toast.LENGTH_SHORT)
-                    .show()
+                if (direction == ItemTouchHelper.LEFT) {
+                    viewModel.delete(adapter.getRecipe(viewHolder.adapterPosition))
+                    Toast.makeText(this@RecipesFragment.context, "Recipe deleted", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    val recipe = adapter.getRecipe(viewHolder.adapterPosition)
+                    val action = RecipesFragmentDirections.actionRecipesFragmentToCounterFragment(recipe)
+                    navController.navigate(action)
+                }
             }
 
         }).attachToRecyclerView(recyclerView)
