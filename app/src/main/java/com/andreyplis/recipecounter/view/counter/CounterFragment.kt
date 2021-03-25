@@ -30,19 +30,29 @@ class CounterFragment : Fragment() {
         val recipe = args.recipe
 
         val priceView = view.findViewById<TextView>(R.id.textView9)
+        val recipeDescription = view.findViewById<TextView>(R.id.textView2)
+        recipeDescription.text = recipe.description
+
+        val recipeMeasure = view.findViewById<TextView>(R.id.textView5)
 
         var listDiam: List<Int>
         if (recipe.type == Recipe.TYPE.CAKE) {
             listDiam = mutableListOf(16, 18, 20, 22, 24, 26, 28, 30)
+            recipeMeasure.text = "Diameter"
         } else {
             listDiam = generateSequence(3, { i -> (i + 1).takeIf { it <= 50 } }).toList()
+            recipeMeasure.text = "Count"
         }
 
         val diam = view.findViewById<Spinner>(R.id.spinnerDiam)
         val ad = ArrayAdapter(this.requireContext(), android.R.layout.simple_list_item_1, listDiam)
 
         diam.adapter = ad
-        diam.setSelection(ad.getPosition(recipe.diameter))
+        if (recipe.type == Recipe.TYPE.CAKE) {
+            diam.setSelection(ad.getPosition(recipe.diameter))
+        } else {
+            diam.setSelection(ad.getPosition(recipe.count))
+        }
 
 
         val viewModel = ViewModelProviders.of(this).get(CounterViewModel::class.java)
